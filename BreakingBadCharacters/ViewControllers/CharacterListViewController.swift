@@ -42,9 +42,14 @@ class CharacterListViewController: UITableViewController {
     }
     
     private func fetchCharacters() {
-        NetworkManager.shared.fetchCharacter(with: mainUrl) { character in
-            self.characters = character
-            self.tableView.reloadData()
+        NetworkManager.shared.fetchCharacterWithAlamofire(mainUrl) { result in
+            switch result {
+            case .success(let character):
+                self.characters = character
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 

@@ -6,6 +6,13 @@
 //
 
 import Foundation
+import Alamofire
+
+enum NetworkError: Error {
+    case invalidUrl
+    case decodingError
+    case noData
+}
 
 class NetworkManager {
     static let shared = NetworkManager()
@@ -30,5 +37,21 @@ class NetworkManager {
                 print(error)
             }
         }.resume()
+    }
+    
+    func fetchCharacterWithAlamofire(_ url: String, completion: @escaping(Result<[Character], NetworkError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseJSON { responseData in
+                switch responseData.result {
+                case .success(let value):
+                    let character = Character.getCharacters(with: value)
+                    DispatchQueue.main.async {
+                        completion(.success(character))
+                    }
+                case .failure:
+                    completion(.failure(.noData))
+                }
+            }
     }
 }

@@ -83,6 +83,10 @@
                                     <constraint firstItem="mCc-v1-LiH" firstAttribute="leading" secondItem="rQJ-ZK-TKh" secondAttribute="leadingMargin" id="ZJn-dz-i3o"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="nIf-Jn-hE6">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dZP-dB-38g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -95,6 +99,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9kf-3k-vAb"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="nIf-Jn-hE6" id="t65-2c-ftc"/>
                         <outlet property="birthdayLabel" destination="Ygy-J1-7Q0" id="mFY-RL-izA"/>
                         <outlet property="characterImage" destination="mCc-v1-LiH" id="x0Z-fM-ffd"/>
                         <outlet property="nameLabel" destination="r4b-zs-C2L" id="1Qh-B9-rMY"/>
